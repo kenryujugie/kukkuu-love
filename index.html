@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>For Kukkuu 💖</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+    .card {
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      text-align: center;
+      max-width: 320px;
+      animation: float 3s ease-in-out infinite;
+    }
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+    h1 { color: #ff4d6d; }
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 30px;
+      background: #ff4d6d;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+    .hidden { display: none; }
+    .hearts span {
+      position: absolute;
+      color: #ff4d6d;
+      font-size: 20px;
+      animation: fall 4s linear infinite;
+    }
+    @keyframes fall {
+      0% { transform: translateY(-100px); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+  <div class="card" id="card">
+    <h1>Hey Kukkuu 💕</h1>
+    <p>Tap the button… I made this just for you.</p>
+    <button onclick="reveal()">Tap to open 💌</button>
+    <div id="message" class="hidden">
+      <p style="margin-top:20px;">
+        From the moment you came into my life,
+        everything started feeling lighter, warmer, better.
+        You’re my comfort, my smile, my favourite thought.
+        No matter where life takes us — you’ll always be special to me.
+        <br/><br/>
+        I hope this made you smile… because you make me smile every single day 💖
+      </p>
+    </div>
+  </div>
+
+  <audio id="music" src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"></audio>
+
+  <script>
+    function reveal() {
+      document.getElementById('message').classList.remove('hidden');
+      document.getElementById('music').play();
+      for (let i = 0; i < 20; i++) {
+        let heart = document.createElement('span');
+        heart.innerHTML = '❤';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = 2 + Math.random() * 3 + 's';
+        heart.classList.add('hearts');
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+      }
+    }
+  </script>
+</body>
+</html>
